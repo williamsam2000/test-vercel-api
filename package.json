@@ -1,0 +1,26 @@
+{
+  "name": "test-vercel-api",
+  "version": "1.0.0",
+  "description": "Test deploy express api to vercel",
+  "main": "index.js",
+  "engines": {
+    "node": "14.x"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/williamsam2000/test-vercel-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/williamsam2000/test-vercel-api/issues"
+  },
+  "homepage": "https://github.com/williamsam2000/test-vercel-api#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
