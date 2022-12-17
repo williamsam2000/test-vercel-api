@@ -7,7 +7,8 @@
     "node": "14.x"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "devStart" : "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,9 @@
   },
   "homepage": "https://github.com/williamsam2000/test-vercel-api#readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^6.8.0",
+    "nodemon": "^2.0.20"
   }
 }
