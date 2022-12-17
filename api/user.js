@@ -14,13 +14,13 @@ router.get("/getAllUser", async (req, res) => {
   }
 });
 
-// router.get("/getUser", async (req, res) => {
-//   try {
-//     const user = await User.find();
-//     res.status(200).json(user);
-//   } catch (err) {
-//     res.status(500).json({ meesage: err.message });
-//   }
-// });
+router.get("/getUser", async (req, res) => {
+  try {
+    const user = await User.find();
+    res.status(200).json(user);
+  } catch (err) {
+    res.status(500).json({ meesage: err.message });
+  }
+});
 
 module.exports = router;
