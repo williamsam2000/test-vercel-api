@@ -40,6 +40,24 @@ router.get("/getUserByFirebaseID", async (req, res) => {
   }
 });
 
+// update user
+router.post("/updateUser", async (req, res) => {
+  try {
+    const user = await User.findOneAndUpdate(
+      {
+        firebaseUID: req.query.firebaseUID,
+      },
+      {
+        firstName: req.body.updateUser.firstName,
+        lastName: req.body.updateUser.lastName,
+      }
+    );
+    res.status(200).json(user);
+  } catch (err) {
+    res.status(400).json({ error: err });
+  }
+});
+
 // update user role become doctor
 router.post("/userBecomeDoctor", async (req, res) => {
   try {
@@ -58,6 +76,7 @@ router.post("/userBecomeDoctor", async (req, res) => {
   }
 });
 
+// get doctor by type
 router.get("/getDoctorByType", async (req, res) => {
   try {
     const doctor = await User.find({
@@ -70,6 +89,7 @@ router.get("/getDoctorByType", async (req, res) => {
   }
 });
 
+// get all customer
 router.get("/getAllCustomer", async (req, res) => {
   try {
     const customer = await User.find({
@@ -81,6 +101,7 @@ router.get("/getAllCustomer", async (req, res) => {
   }
 });
 
+// get all doctor
 router.get("/getAllDoctor", async (req, res) => {
   try {
     const doctor = await User.find({
@@ -92,6 +113,7 @@ router.get("/getAllDoctor", async (req, res) => {
   }
 });
 
+// add track record
 router.post("/addTrackRecord", async (req, res) => {
   try {
     const data = await TrackRecord({
@@ -107,6 +129,7 @@ router.post("/addTrackRecord", async (req, res) => {
   }
 });
 
+// show track record
 router.get("/showTrackRecord", async (req, res) => {
   try {
     const trackRecord = await TrackRecord.find({
@@ -114,6 +137,59 @@ router.get("/showTrackRecord", async (req, res) => {
       patientFirebaseUID: req.query.patientFirebaseUID,
     });
     res.status(200).json(trackRecord);
+  } catch (err) {
+    res.status(400).json({ error: err });
+  }
+});
+
+// update customer consult
+router.post("/updateCustomerConsult", async (req, res) => {
+  try {
+    const user = await User.findOneAndUpdate(
+      {
+        firebaseUID: req.query.firebaseUID,
+      },
+      {
+        $push: {
+          consultWith: {
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            firebaseUID: req.body.firebaseUID,
+          },
+        },
+      }
+      // {
+      //   consultWith:{
+      //     firstName: req.body.firstName,
+      //     lastName: req.body.lastName,
+      //     firebaseUID: req.body.firebaseUID,
+      //   },
+      // }
+    );
+    res.status(200).json(user);
+  } catch (err) {
+    res.status(400).json({ error: err });
+  }
+});
+
+// update doctor consult
+router.post("/updateDoctorConsult", async (req, res) => {
+  try {
+    const user = await User.findOneAndUpdate(
+      {
+        firebaseUID: req.query.firebaseUID,
+      },
+      {
+        $push: {
+          consultWith: {
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            firebaseUID: req.body.firebaseUID,
+          },
+        },
+      }
+    );
+    res.status(200).json(user);
   } catch (err) {
     res.status(400).json({ error: err });
   }
