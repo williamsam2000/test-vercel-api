@@ -195,4 +195,20 @@ router.post("/updateDoctorConsult", async (req, res) => {
   }
 });
 
+// upload image
+router.post("/uploadImage", async (req, res) => {
+  try {
+    const user = await User.findOneAndUpdate(
+      {
+        firebaseUID: req.query.firebaseUID,
+      },
+      {
+        imageUrl: req.body.imageUrl,
+      }
+    );
+    res.json(user);
+  } catch (err) {
+    res.status(400).json({ error: err });
+  }
+});
 module.exports = router;
