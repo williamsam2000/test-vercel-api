@@ -203,10 +203,10 @@ router.post("/uploadImage", async (req, res) => {
         firebaseUID: req.query.firebaseUID,
       },
       {
-        imageUrl: req.body.imageUrl,
+        imageUrl: req.query.imageUrl,
       }
     );
-    res.json(user);
+    res.status(200).json(user);
   } catch (err) {
     res.status(400).json({ error: err });
   }
