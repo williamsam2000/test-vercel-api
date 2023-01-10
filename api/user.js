@@ -203,7 +203,7 @@ router.post("/uploadImage", async (req, res) => {
         firebaseUID: req.query.firebaseUID,
       },
       {
-        imageUrl: req.query.imageUrl,
+        imageUrl: req.body.imageUrl,
       }
     );
     res.status(200).json(user);
